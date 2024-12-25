@@ -8,8 +8,8 @@ import 'package:hire_harmony/views/widgets/category_widget.dart';
 import 'package:hire_harmony/views/widgets/custom_carousel_indicator.dart';
 import 'package:hire_harmony/views/widgets/populer_service.dart';
 
-class EmpHomePage extends StatelessWidget {
-  const EmpHomePage({super.key});
+class CusHomePage extends StatelessWidget {
+  const CusHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

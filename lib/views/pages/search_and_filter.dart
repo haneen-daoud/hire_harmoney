@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
+import 'package:hire_harmony/views/pages/emp_profile_details.dart';
 
 class SearchAndFilter extends StatelessWidget {
   SearchAndFilter({super.key});
@@ -54,10 +55,8 @@ class SearchAndFilter extends StatelessWidget {
                 children: [
                   IconButton(
                     icon: Icon(Icons.arrow_back, color: AppColors.navy),
-                    onPressed: (
-                    
-
-                    ) {
+                    onPressed: () {
+                      Navigator.pop(context);
                       // Handle back button
                     },
                   ),
@@ -281,7 +280,13 @@ class SearchAndFilter extends StatelessWidget {
                                 backgroundColor:
                                     WidgetStateProperty.all(AppColors.orange),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                               
+                               Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => const EmpProfileDetails()),
+                                );
+                              },
                               child: Text(
                                 'veiw profile',
                                 style: TextStyle(

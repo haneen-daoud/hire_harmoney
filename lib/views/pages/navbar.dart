@@ -1,7 +1,7 @@
 import 'package:fluid_bottom_nav_bar/fluid_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
-import 'package:hire_harmony/views/pages/emp_home_page.dart';
+import 'package:hire_harmony/views/pages/cus_home_page.dart';
 import 'package:hire_harmony/views/pages/favorites_page.dart';
 import 'package:hire_harmony/views/pages/profile_page.dart';
 
@@ -16,7 +16,7 @@ class _AdnNavbarState extends State<AdnNavbar> {
   Widget? _child;
   @override
   void initState() {
-    _child = const EmpHomePage();
+    _child = const CusHomePage();
     super.initState(); // Initialize controller
   }
 
@@ -82,7 +82,7 @@ class _AdnNavbarState extends State<AdnNavbar> {
     setState(() {
       switch (index) {
         case 0:
-          _child = const EmpHomePage();
+          _child = const CusHomePage();
           break;
         case 1:
           _child = const FavoritesPage();

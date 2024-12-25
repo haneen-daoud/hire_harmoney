@@ -72,9 +72,9 @@ class ProfileInfo extends StatelessWidget {
         future: fetchProfileData(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError || !snapshot.hasData) {
-            return Center(child: Text('Error loading data'));
+            return const Center(child: Text('Error loading data'));
           }
 
           final data = snapshot.data!;

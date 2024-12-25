@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
-import 'package:hire_harmony/views/pages/emp_home_page.dart';
+import 'package:hire_harmony/views/pages/cus_home_page.dart';
+import 'package:hire_harmony/views/pages/employeePages/emp_home_page.dart';
 import 'package:hire_harmony/views/pages/favorites_page.dart';
 import 'package:hire_harmony/views/pages/messages_page.dart';
 import 'package:hire_harmony/views/pages/order_page.dart';
@@ -92,12 +93,14 @@ class _CustomButtomNavbarState extends State<CustomButtomNavbar> {
           ),
         ],
       ),
-      body: const <Widget>[
+      body: <Widget>[
+      
+        //CusHomePage(),
         EmpHomePage(),
-        FavoritesPage(),
-        OrderPage(),
-        MessagesPage(),
-        ProfilePage(),
+        const FavoritesPage(),
+        const OrderPage(),
+        const MessagesPage(),
+        const ProfilePage(),
       ][currentPageIndex],
     );
   }

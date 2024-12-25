@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hire_harmony/utils/app_theme.dart';
 import 'package:hire_harmony/views/pages/custom_buttom_navbar.dart';
+import 'package:hire_harmony/views/pages/employeePages/emp_home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme(),
       darkTheme: AppTheme.darkTheme(),
 
-      home:const  CustomButtomNavbar(),
+      home:CustomButtomNavbar(),
       /*const EmpSignUp(stepText: "Step 1: Upload the front of your ID"),*/
       /* const VerificationSuccessPage(
       /*  notificationTitle:'Phone Number Verification Successful',
