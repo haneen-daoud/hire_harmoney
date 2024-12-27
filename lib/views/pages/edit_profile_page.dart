@@ -34,7 +34,7 @@ Future<void> fetchData() async {
     } catch (e) {
       print('Error fetching data: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('فشل تحميل البيانات')),
+        const SnackBar(content: Text('فشل تحميل البيانات')),
       );
     }
   }
@@ -47,14 +47,14 @@ Future<void> fetchData() async {
       }, SetOptions(merge: true));
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('تم تحديث البيانات بنجاح')),
+        const SnackBar(content: Text('تم تحديث البيانات بنجاح')),
       );
 
       Navigator.pop(context);
     } catch (e) {
       print('Error updating data: $e');
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('فشل تحديث البيانات')),
+        const SnackBar(content: Text('فشل تحديث البيانات')),
       );
     }
   }

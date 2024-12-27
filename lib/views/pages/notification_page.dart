@@ -3,7 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
 
 class NotificationPage extends StatefulWidget {
+  const NotificationPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _NotificationPageState createState() => _NotificationPageState();
 }
 
@@ -76,7 +79,7 @@ class _NotificationPageState extends State<NotificationPage> {
         ],
       ),
       body: ListView.builder(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         itemCount: notifications.length,
         itemBuilder: (context, index) {
           return _buildNotificationCard(index);
@@ -95,10 +98,10 @@ class _NotificationPageState extends State<NotificationPage> {
         });
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 300), // مدة الحركة
+        duration: const Duration(milliseconds: 300), // مدة الحركة
         curve: Curves.easeInOut, // منحنى الحركة
-        margin: EdgeInsets.symmetric(vertical: 8),
-        padding: EdgeInsets.all(16),
+        margin: const EdgeInsets.symmetric(vertical: 8),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: notification['isRead']
               ? Colors.grey.shade200

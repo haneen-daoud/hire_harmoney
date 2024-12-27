@@ -16,9 +16,13 @@ class AppColors {
   static Color navy2 = const Color.fromARGB(255, 47, 60, 107);
 
   static Color teal = const Color.fromRGBO(40, 92, 92, 1);
+  static Color lightblue = const Color.fromARGB(255, 206, 229, 253);
+
   static Color red = Colors.red;
 
   static  Color orange = const Color.fromRGBO(255, 100, 4, 1);
+    static  Color orangeopacity = const Color.fromARGB(255, 255, 136, 63);
+
   static  Color orangelight = const Color.fromARGB(255, 245, 232, 225);
 
   static Color orange2 = const Color.fromARGB(255, 164, 63, 0);

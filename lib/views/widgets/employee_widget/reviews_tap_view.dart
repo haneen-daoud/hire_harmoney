@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
+import 'package:hire_harmony/views/pages/reviews_page.dart';
 
 class ReviewsTapView extends StatelessWidget {
   const ReviewsTapView({super.key});
@@ -23,21 +24,27 @@ class ReviewsTapView extends StatelessWidget {
                   color: AppColors.navy,
                 ),
               ),
-              TextButton(
-                onPressed: () {
-                  // Add functionality for 'See All'
-                },
-                child: Text(
-                  'See All',
-                  style: TextStyle(
-                    color: AppColors.orange,
-                    fontWeight: FontWeight.w500,
+              
+               TextButton(
+                  child: Text(
+                    'See All',
+                    style: TextStyle(
+                      color: AppColors.orange,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
+                  onPressed: () {
+                    // NAvigator to ReviewPage
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ReviewPage()),
+                    );
+                  },
                 ),
-              )
+              
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
 
           // Star Rating Summary
           Row(
@@ -48,13 +55,13 @@ class ReviewsTapView extends StatelessWidget {
                   return Row(
                     children: [
                       Text(
-                        '${5 - index}',
-                        style: TextStyle(
+                        '${5 - index}', 
+                        style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      SizedBox(width: 5),
+                      const SizedBox(width: 5),
                       Container(
                         width: 150,
                         height: 8,
@@ -77,7 +84,7 @@ class ReviewsTapView extends StatelessWidget {
                   );
                 }),
               ),
-              Spacer(),
+              const Spacer(),
               Column(
                 children: [
                   Text(
@@ -98,7 +105,7 @@ class ReviewsTapView extends StatelessWidget {
                       ),
                     ),
                   ),
-                 Text(
+                  const Text(
                     '(238 reviews)',
                     style: TextStyle(
                       color: Colors.grey,
@@ -110,9 +117,7 @@ class ReviewsTapView extends StatelessWidget {
             ],
           ),
 
-          SizedBox(height: 20),
-
-          
+          const SizedBox(height: 20),
         ],
       ),
     );

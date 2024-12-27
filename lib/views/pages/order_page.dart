@@ -4,7 +4,7 @@ import 'package:hire_harmony/views/widgets/order_history_tap_view.dart';
 import 'package:hire_harmony/views/widgets/order_penging_tap_view.dart';
 
 class OrderPage extends StatelessWidget {
-  const OrderPage({Key? key}) : super(key: key);
+  const OrderPage({super.key});
 
   @override
   Widget build(BuildContext context) {

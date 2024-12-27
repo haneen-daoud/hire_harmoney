@@ -1,18 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
+import 'package:hire_harmony/views/pages/employeePages/advertisement.dart';
+import 'package:hire_harmony/views/pages/employeePages/emp_booking_page.dart';
+import 'package:hire_harmony/views/pages/employeePages/help_support_page.dart';
+import 'package:hire_harmony/views/pages/employeePages/tiket_page.dart';
 import 'package:hire_harmony/views/pages/notification_page.dart';
 import 'package:hire_harmony/views/pages/search_and_filter.dart';
+import 'package:hire_harmony/views/widgets/employee_widget/drawer_widget.dart';
 import 'package:hire_harmony/views/widgets/employee_widget/photo_tap_view.dart';
 import 'package:hire_harmony/views/widgets/employee_widget/prev_work.dart';
 import 'package:hire_harmony/views/widgets/employee_widget/reviews_tap_view.dart';
 
 class EmpHomePage extends StatelessWidget {
+  // GlobalKey للتحكم في Scaffold
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey, // تعيين المفتاح
         backgroundColor: Colors.white,
+        drawer: const ProfileDrawer(
+          name: "Haneen Daoud",
+          email: "haneendaoud2023@gmail.com",
+        ),
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(150),
           child: Container(
@@ -27,9 +40,14 @@ class EmpHomePage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        const Icon(Icons.account_circle_outlined,
-                            color: Colors.white, size: 25),
-                        const SizedBox(width: 8),
+                        IconButton(
+                          icon: Icon(Icons.account_circle_outlined,
+                              color: AppColors.white, size: 25),
+                          onPressed: () {
+                            // فتح القائمة الجانبية
+                            _scaffoldKey.currentState?.openDrawer();
+                          },
+                        ),
                         Text(
                           'Good Afternoon, Haneen',
                           style: GoogleFonts.montserratAlternates(
@@ -97,7 +115,7 @@ class EmpHomePage extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16 ,vertical:16),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -116,26 +134,67 @@ class EmpHomePage extends StatelessWidget {
                 GridView.count(
                   crossAxisCount: 3,
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   children: [
-                    
                     OverviewCard(
                         title: 'Order', count: '32', icon: Icons.shopping_bag),
                     OverviewCard(
-                        title: 'Booking', count: '100', icon: Icons.book_online),
+                      title: 'Booking',
+                      count: '100',
+                      icon: Icons.book_online,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BookingScreen(),
+                          ),
+                        );
+                      },
+                    ),
                     OverviewCard(
-                        title: 'Post Ad', count: '32', icon: Icons.post_add),
+                      title: 'Post Ad',
+                      count: '32',
+                      icon: Icons.post_add,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AdvertisementScreen(),
+                          ),
+                        );
+                      },
+                    ),
                     OverviewCard(
-                        title: 'Project Task', count: '24', icon: Icons.task),
+                      title: 'Project Task',
+                      count: '24',
+                      icon: Icons.task,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HelpSupportPage(),
+                          ),
+                        );
+                      },
+                    ),
                     OverviewCard(
-                        title: 'Support Credits',
-                        count: '24',
-                        icon: Icons.support),
+                      title: 'Support Credits',
+                      count: '24',
+                      icon: Icons.support,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => TicketsPage(),
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 const PrevWork(),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
               ],
             ),
           ),
@@ -149,22 +208,31 @@ class OverviewCard extends StatelessWidget {
   final String title;
   final String count;
   final IconData icon;
+  final VoidCallback? onTap;
 
-  OverviewCard({required this.title, required this.count, required this.icon});
+  OverviewCard({
+    required this.title,
+    required this.count,
+    required this.icon,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      elevation: 1,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, color: AppColors.orange, size: 30),
-          SizedBox(height: 5),
-          Text(title, style: TextStyle(fontSize: 14)),
-          Text(count, style: TextStyle(fontSize: 12, color: Colors.grey)),
-        ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        elevation: 1,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, color: AppColors.orange, size: 30),
+            const SizedBox(height: 5),
+            Text(title, style: const TextStyle(fontSize: 14)),
+            Text(count, style: const TextStyle(fontSize: 12, color: Colors.grey)),
+          ],
+        ),
       ),
     );
   }
@@ -179,7 +247,7 @@ class WorkPhotoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 16),
+      margin: const EdgeInsets.only(right: 16),
       width: 150,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
@@ -188,15 +256,15 @@ class WorkPhotoCard extends StatelessWidget {
       child: Column(
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
             child: Image.network(image, height: 100, fit: BoxFit.cover),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Text(
               title,
-              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
             ),
           )
         ],

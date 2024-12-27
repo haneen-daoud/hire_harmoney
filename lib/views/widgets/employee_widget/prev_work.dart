@@ -13,7 +13,7 @@ class PrevWork extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             'Previous Work',
             style: GoogleFonts.montserratAlternates(
@@ -24,7 +24,7 @@ class PrevWork extends StatelessWidget {
                       ),
                     ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           DefaultTabController(
             length: 2, // عدد التابات
             child: Column(
@@ -39,7 +39,7 @@ class PrevWork extends StatelessWidget {
                     Tab(text: 'Reviews'),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 300, // الارتفاع المناسب لعرض المحتوى
                   child: TabBarView(
                     children: [

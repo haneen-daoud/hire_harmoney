@@ -14,12 +14,15 @@ class _PhotoTapViewState extends State<PhotoTapView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 16),
-            Text(
+            Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
               'Previous Work Photos',
               style: GoogleFonts.montserratAlternates(
                 textStyle: TextStyle(
@@ -29,35 +32,55 @@ class _PhotoTapViewState extends State<PhotoTapView> {
                 ),
               ),
             ),
-            const SizedBox(height: 16),
-            SingleChildScrollView(
+              
+               TextButton(
+                  child: Text(
+                    'See All',
+                    style: TextStyle(
+                      color: AppColors.orange,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  onPressed: () {
+                    // NAvigator to ReviewPage
+                   
+                  },
+                ),
+              
+              
+            ],
+          ),
+            const SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
+              child:  Row(
                 children: [
                   WorkPhotoCard(
-                    image: 'https://via.placeholder.com/150',
+                    image: 'assets/images/Spring-Cleaning.jpg',
                     title: 'Pearl Facial',
                   ),
                   WorkPhotoCard(
-                    image: 'https://via.placeholder.com/150',
+                    image: 'assets/images/Spring-Cleaning.jpg',
                     title: 'Glow Facial',
                   ),
                 ],
               ),
             ),
+
           ],
         ),
       ),
+
       // زر الإضافة الثابت
       floatingActionButton: FloatingActionButton(
+
         backgroundColor: AppColors.orange,
         onPressed: () {
           showDialog(
             context: context,
-            builder: (context) => AddPhotoDialog(),
+            builder: (context) => const AddPhotoDialog(),
           );
         },
-        child: Icon(Icons.add, color: Colors.white),
+        child: const Icon(Icons.add, color: Colors.white),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
@@ -88,7 +111,7 @@ class AddPhotoDialog extends StatelessWidget {
                 color: AppColors.navy,
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             TextField(
               decoration: InputDecoration(
                 labelText: 'Title',
@@ -97,7 +120,7 @@ class AddPhotoDialog extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             GestureDetector(
               onTap: () {
                 // أضف وظيفة اختيار صورة
@@ -109,14 +132,14 @@ class AddPhotoDialog extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   color: Colors.grey.shade200,
                 ),
-                child: Icon(Icons.image, size: 50, color: Colors.grey),
+                child: const Icon(Icons.image, size: 50, color: Colors.grey),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.navy,
-                minimumSize: Size(double.infinity, 45),
+                minimumSize: const Size(double.infinity, 45),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -125,7 +148,7 @@ class AddPhotoDialog extends StatelessWidget {
                 Navigator.pop(context);
                 // أضف وظيفة الحفظ هنا
               },
-              child: Text(
+              child: const Text(
                 'Add',
                 style: TextStyle(color: Colors.white),
               ),
@@ -151,24 +174,25 @@ class WorkPhotoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 8),
+      margin: const EdgeInsets.only(right: 8),
       width: 180,
       height: 150,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         image: DecorationImage(
-          image: NetworkImage(image),
+          image: AssetImage(image), 
           fit: BoxFit.cover,
         ),
       ),
       child: Align(
         alignment: Alignment.bottomCenter,
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: 4),
+          color: Colors.black.withOpacity(0.6),
+          padding: const EdgeInsets.symmetric(vertical: 4),
           child: Text(
             title,
             style: TextStyle(
-              color: Colors.white,
+              color: AppColors.white,
               fontSize: 12,
               fontWeight: FontWeight.bold,
             ),
@@ -178,3 +202,4 @@ class WorkPhotoCard extends StatelessWidget {
     );
   }
 }
+

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:hire_harmony/utils/app_colors.dart';
 
 class PhotosSection extends StatelessWidget {
@@ -133,3 +133,4 @@ class AddPhotoDialog extends StatelessWidget {
     );
   }
 }
+*/

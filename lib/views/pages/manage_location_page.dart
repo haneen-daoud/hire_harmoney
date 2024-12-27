@@ -10,7 +10,7 @@ class ManageLocationPage extends StatefulWidget {
 
 class _ManageLocationPageState extends State<ManageLocationPage> {
   late GoogleMapController mapController;
-  LatLng _currentPosition = LatLng(17.3850, 78.4867); // Default position (Hyderabad)
+  LatLng _currentPosition = const LatLng(17.3850, 78.4867); // Default position (Hyderabad)
   bool _isLoadingLocation = false;
 
   // لتحديد الموقع الحالي
@@ -36,7 +36,7 @@ class _ManageLocationPageState extends State<ManageLocationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Manage Address'),
+        title: const Text('Manage Address'),
         centerTitle: true,
         backgroundColor: Colors.blue,
       ),
@@ -44,29 +44,29 @@ class _ManageLocationPageState extends State<ManageLocationPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListTile(
-            leading: Icon(Icons.home, color: Colors.blue),
-            title: Text('Home'),
-            subtitle: Text('Plot no.209, Kavuri Hills, Madhapur, Telangana'),
+            leading: const Icon(Icons.home, color: Colors.blue),
+            title: const Text('Home'),
+            subtitle: const Text('Plot no.209, Kavuri Hills, Madhapur, Telangana'),
             trailing: PopupMenuButton(
               itemBuilder: (context) => [
-                PopupMenuItem(value: 'edit', child: Text('Edit')),
-                PopupMenuItem(value: 'delete', child: Text('Delete')),
+                const PopupMenuItem(value: 'edit', child: Text('Edit')),
+                const PopupMenuItem(value: 'delete', child: Text('Delete')),
               ],
             ),
           ),
-          Divider(),
+          const Divider(),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: TextButton.icon(
-              icon: Icon(Icons.add_location_alt, color: Colors.blue),
-              label: Text('Add another address'),
+              icon: const Icon(Icons.add_location_alt, color: Colors.blue),
+              label: const Text('Add another address'),
               onPressed: () => _showAddressBottomSheet(context),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Expanded(
             child: _isLoadingLocation
-                ? Center(child: CircularProgressIndicator())
+                ? const Center(child: CircularProgressIndicator())
                 : GoogleMap(
                     onMapCreated: (controller) => mapController = controller,
                     initialCameraPosition: CameraPosition(
@@ -75,7 +75,7 @@ class _ManageLocationPageState extends State<ManageLocationPage> {
                     ),
                     markers: {
                       Marker(
-                        markerId: MarkerId('currentLocation'),
+                        markerId: const MarkerId('currentLocation'),
                         position: _currentPosition,
                       ),
                     },
@@ -103,42 +103,42 @@ class _ManageLocationPageState extends State<ManageLocationPage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('Edit / Update Address',
+              const Text('Edit / Update Address',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              SizedBox(height: 10),
-              TextField(
+              const SizedBox(height: 10),
+              const TextField(
                 decoration: InputDecoration(
                   labelText: 'House/Flat Number',
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 10),
-              TextField(
+              const SizedBox(height: 10),
+              const TextField(
                 decoration: InputDecoration(
                   labelText: 'Landmark (Optional)',
                   border: OutlineInputBorder(),
                 ),
               ),
-              SizedBox(height: 10),
-              Row(
+              const SizedBox(height: 10),
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ChoiceChip(label: Text('Home'), selected: true),
                   ChoiceChip(label: Text('Other'), selected: false),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  minimumSize: Size(double.infinity, 50),
+                  minimumSize: const Size(double.infinity, 50),
                   backgroundColor: Colors.blue,
                 ),
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text('Update address'),
+                child: const Text('Update address'),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
             ],
           ),
         );
